@@ -1,0 +1,1 @@
+web: gunicorn shuba_back_copy.wsgi --log-file -

@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  backend:
+    build: .
+
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/Shuba_back
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+  frontend:
+    build: /home/bazz/PycharmProjects/Shuba_front
+    restart: always
+    ports:
+      - 5002:5000
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=5555165
+    volumes:
+      - ./shuba:/var/lib/postgresql/13/main
+
+
